@@ -33,18 +33,26 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-print(room['outside'].n_to.name)
-print(room['foyer'].name)
+# print(room['outside'].n_to.name)
+# print(room['foyer'].name)
 
 #
 # Main
 #
 
 # Make a new player object that is currently in the 'outside' room.
+print("---<===================================>---")
+print("     Welcome to the Lambda Trail game!")
+print("---<===================================>---")
 
-player = Player("Joe", "outside")
+name = input("Enter your name, hero:")
+nowlocation = room['outside']
 
-print(player.name)
+player = Player(name, nowlocation)
+
+print("Welcome to the lands of might and magic,", player.name)
+print("Right now you at", player.current_room.name, "- looks like there is a lot of adventures, huh?")
+print("===========================================")
 
 # Write a loop that:
 #

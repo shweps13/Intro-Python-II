@@ -72,6 +72,17 @@ playmode = True
 print("                -=loading=-                ")
 print("===========================================")
 
+print("You can move in different sides to explore \n")
+print("                    [n]                      ")
+print("                     ^                       ")
+print("               [w] <   > [e]                 ")
+print("                     v                       ")
+print("                    [s]                      ")
+print("\nUse letters to move to [n]orth, [s]outh, [e]ast, [w]est")
+print("\nType [q] fot quit")
+print("===========================================")
+
+
 while playmode is True:
     print(f"\n{player.name}, you at {player.current_room.name}")
     action = input("What do you wanna do now?")

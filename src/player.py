@@ -2,9 +2,16 @@
 # currently.
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, current_room, inventory = []):
         self.name = name
         self.current_room = current_room
+        self.inventory = inventory
 
     def change_room(self, new_room):
         self.current_room = new_room
+
+    def show_inventory(self):
+        if len(self.inventory) == 0:
+            return "Empty"
+        else:
+            return ", ".join(item.item_name for item in self.inventory)

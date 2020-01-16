@@ -23,6 +23,23 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+item = {
+    'key': Item("Miscarcand Key", """Miscarcand Key is the key to the kingdom beneath 
+Ayleid Ruin of Miscarcand, and it allows for a quick exit without having to travel 
+through the labyrinth of Morimath or Sel Vanua"""),
+
+    'lockpick': Item("Lockpick", """A Lockpick is a tool used for picking the locks of 
+doors and chests."""),
+
+    'scroll': Item("Stormrider Scroll", """The scroll deals Shock Damage in a 
+large area and also grants Shock Resistance."""),
+
+    'pickaxe': Item("Pickaxe", """The pickaxe is a small sharp 
+bladed tool used to mine for ore and dig through rock."""),
+
+    'dagger': Item("Iron Dagger", """Simple and workable weapon"""),
+}
+
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -93,6 +110,8 @@ while playmode is True:
         playmode = False
     elif action == "c" or action == "check":
         print(f"\nItems in room: {nowlocation.show_items()}")
+    elif action == "i" or action == "inventory":
+        print(f"\nInventory: {player.show_inventory()}")
     elif action == "n" or action == "north":
         if hasattr(nowlocation, "n_to"):
             nowlocation = nowlocation.n_to

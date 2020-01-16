@@ -45,12 +45,15 @@ print("---<===================================>---")
 print("     Welcome to the Lambda Trail game!")
 print("---<===================================>---")
 
+
+
 name = input("Enter your name, hero:")
+
 nowlocation = room['outside']
 
 player = Player(name, nowlocation)
 
-print("Welcome to the lands of might and magic,", player.name)
+print("\nWelcome to the lands of might and magic,", player.name)
 print("Right now you at", player.current_room.name, "- looks like there is a lot of adventures, huh?")
 print("===========================================")
 
@@ -64,3 +67,40 @@ print("===========================================")
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+playmode = True
+print("                -=loading=-                ")
+print("===========================================")
+
+while playmode is True:
+    print(f"\n{player.name}, you at {player.current_room.name}")
+    action = input("What do you wanna do now?")
+    if action == "q" or action == "quit":
+        print("\n--= bye-bye =--")
+        playmode = False
+    elif action == "n" or action == "north":
+        if hasattr(nowlocation, "n_to"):
+            nowlocation = nowlocation.n_to
+            player.change_room(nowlocation)
+        else:
+            print("\n--= Movement isn't allowed =--")
+    elif action == "s" or action == "south":
+        if hasattr(nowlocation, "s_to"):
+            nowlocation = nowlocation.s_to
+            player.change_room(nowlocation)
+        else:
+            print("\n--= Movement isn't allowed =--")
+    elif action == "e" or action == "east":
+        if hasattr(nowlocation, "e_to"):
+            nowlocation = nowlocation.e_to
+            player.change_room(nowlocation)
+        else:
+            print("\n--= Movement isn't allowed =--")
+    elif action == "w" or action == "west":
+        if hasattr(nowlocation, "w_to"):
+            nowlocation = nowlocation.w_to
+            player.change_room(nowlocation)
+        else:
+            print("\n--= Movement isn't allowed =--")
+    else:
+        print("\n--= Movement isn't allowed =--")

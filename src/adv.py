@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -54,7 +55,7 @@ nowlocation = room['outside']
 player = Player(name, nowlocation)
 
 print("\nWelcome to the lands of might and magic,", player.name)
-print("Right now you at", player.current_room.name, "- looks like there is a lot of adventures, huh?")
+print("Right now you at", player.current_room.room_name, "- looks like there is a lot of adventures, huh?")
 print("===========================================")
 
 # Write a loop that:
@@ -79,16 +80,19 @@ print("               [w] <   > [e]                 ")
 print("                     v                       ")
 print("                    [s]                      ")
 print("\nUse letters to move to [n]orth, [s]outh, [e]ast, [w]est")
+print("\nYou can check rooms to find items by [c]hek command")
 print("\nType [q] fot quit")
 print("===========================================")
 
 
 while playmode is True:
-    print(f"\n{player.name}, you at {player.current_room.name}")
+    print(f"\n{player.name}, you at {player.current_room.room_name}")
     action = input("What do you wanna do now?")
-    if action == "q" or action == "quit":
+    if action == "q" or action == "quit" or action == "exit":
         print("\n--= bye-bye =--")
         playmode = False
+    elif action == "c" or action == "check":
+        print(f"\nItems in room: {nowlocation.show_items()}")
     elif action == "n" or action == "north":
         if hasattr(nowlocation, "n_to"):
             nowlocation = nowlocation.n_to

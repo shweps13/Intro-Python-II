@@ -6,25 +6,25 @@ from item import Item
 
 
 item = {
-    'key': Item("Key", """Miscarcand Key is the key to the kingdom beneath 
+    'key': Item("key", """Miscarcand Key is the key to the kingdom beneath 
 Ayleid Ruin of Miscarcand, and it allows for a quick exit without having to travel 
 through the labyrinth of Morimath or Sel Vanua"""),
 
-    'lockpick': Item("Lockpick", """A Lockpick is a tool used for picking the locks of 
+    'lockpick': Item("lockpick", """A Lockpick is a tool used for picking the locks of 
 doors and chests."""),
 
-    'scroll': Item("Scroll", """The scroll deals Shock Damage in a 
+    'scroll': Item("scroll", """The scroll deals Shock Damage in a 
 large area and also grants Shock Resistance."""),
 
-    'pickaxe': Item("Pickaxe", """The pickaxe is a small sharp 
+    'pickaxe': Item("pickaxe", """The pickaxe is a small sharp 
 bladed tool used to mine for ore and dig through rock."""),
 
-    'dagger': Item("Dagger", """Simple and workable weapon"""),
+    'dagger': Item("dagger", """Simple and workable weapon"""),
 }
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", [[item["pickaxe"]], [item["dagger"]], [item["key"]]]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", [item["scroll"]]),
@@ -143,6 +143,11 @@ while playmode is True:
         else:
             print("\n--= Movement isn't allowed =--")
     elif len(action) == 2:
-        print('ololo')
+        if action[0] == 't' or action[0] == 'take':
+            player.take_item(action[1], nowlocation)
+            player.pick_up(action[1])
+            print(f"\n[{action[1]}] was picked up")
+        else:
+            print("ololo")
     else:
         print('Incorrect input')

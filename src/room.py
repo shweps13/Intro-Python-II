@@ -17,8 +17,10 @@ class Room:
     
     def __str__(self):
         return "{} \nRoom Description: {}".format(self.room_name, self.room_description)
-
-
     
     def item_dropped(self, item_op):
         self.room_items.append(item_op)
+    
+    def remove_item(self, item, player):
+        self.room_items.remove(item)
+        player.pick_up(item)

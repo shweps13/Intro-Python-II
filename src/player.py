@@ -20,23 +20,15 @@ class Player:
         self.inventory.append(item)
     
     def take_item(self, item, room):
-        print(len(room.room_items))
-        print(len(self.inventory))
-
         if len(room.room_items) == 0:
             print(f"This room has no items.")
             return
-
         e = False
         for i in room.room_items:
             if i[0].item_name == item:
-                # room.remove_item(i, self)
+                room.remove_item(i, self)
                 print(f"{item} founded!")
                 e = True
                 break
-
         if not e:
             print(f"{item} is not here!")
-
-        print(len(room.room_items))
-        print(len(self.inventory))

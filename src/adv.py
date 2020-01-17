@@ -107,7 +107,6 @@ print("===========================================")
 while playmode is True:
     print(f"\n[{player.name}], you at -= {player.current_room.room_name} =-")
     action = input("Your move ==>").lower().split(' ')
-    print(action)
     if len(action) == 1:
         if action[0] == 'q' or action == 'quit' or action == 'exit':
             print("\n--= bye-bye =--")
@@ -145,7 +144,6 @@ while playmode is True:
     elif len(action) == 2:
         if action[0] == 't' or action[0] == 'take':
             player.take_item(action[1], nowlocation)
-            player.pick_up(action[1])
             print(f"\n[{action[1]}] was picked up")
         else:
             print("ololo")

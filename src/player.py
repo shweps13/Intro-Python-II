@@ -14,4 +14,4 @@ class Player:
         if len(self.inventory) == 0:
             return "Empty"
         else:
-            return ", ".join(item.item_name for item in self.inventory)
+            return ', '.join(str(v) for v in self.inventory)

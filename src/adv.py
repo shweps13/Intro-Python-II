@@ -24,14 +24,14 @@ bladed tool used to mine for ore and dig through rock."""),
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", [[item["pickaxe"]], [item["dagger"]]]),
+                     "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", [item["scroll"]]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm.""", [[item["pickaxe"]], [item["dagger"]]]),
+the distance, but there is no way across the chasm.""", [[item["pickaxe"]], [item["dagger"]], [item["key"]]]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air.""", [item["lockpick"]]),

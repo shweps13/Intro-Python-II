@@ -11,9 +11,9 @@ class Room:
         if len(self.room_items) == 0:
             return "This room have no items"
         elif len(self.room_items) == 1:
-            return "You can pick {} here".format(self.room_items[0])
+            return "You can pick [{}] here".format(self.room_items[0])
         else:
-            return "{} can be picked here".format(", ".join(item.item_name for item in self.room_items))
+            return "{} can be picked here".format(', '.join(str(v) for v in self.room_items))
     
     def __str__(self):
         return "{} \nRoom Description: {}".format(self.room_name, self.room_description)

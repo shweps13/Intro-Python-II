@@ -4,40 +4,41 @@ from item import Item
 
 # Declare all the rooms
 
-room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
-
-    'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
-
-    'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
-into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
-
-    'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
-
-    'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
-chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
-}
 
 item = {
-    'key': Item("Miscarcand Key", """Miscarcand Key is the key to the kingdom beneath 
+    'key': Item("Key", """Miscarcand Key is the key to the kingdom beneath 
 Ayleid Ruin of Miscarcand, and it allows for a quick exit without having to travel 
 through the labyrinth of Morimath or Sel Vanua"""),
 
     'lockpick': Item("Lockpick", """A Lockpick is a tool used for picking the locks of 
 doors and chests."""),
 
-    'scroll': Item("Stormrider Scroll", """The scroll deals Shock Damage in a 
+    'scroll': Item("Scroll", """The scroll deals Shock Damage in a 
 large area and also grants Shock Resistance."""),
 
     'pickaxe': Item("Pickaxe", """The pickaxe is a small sharp 
 bladed tool used to mine for ore and dig through rock."""),
 
-    'dagger': Item("Iron Dagger", """Simple and workable weapon"""),
+    'dagger': Item("Dagger", """Simple and workable weapon"""),
+}
+
+room = {
+    'outside':  Room("Outside Cave Entrance",
+                     "North of you, the cave mount beckons", [[item["pickaxe"]], [item["dagger"]]]),
+
+    'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
+passages run north and east.""", [item["scroll"]]),
+
+    'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
+into the darkness. Ahead to the north, a light flickers in
+the distance, but there is no way across the chasm.""", [[item["pickaxe"]], [item["dagger"]]]),
+
+    'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
+to north. The smell of gold permeates the air.""", [item["lockpick"]]),
+
+    'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
+chamber! Sadly, it has already been completely emptied by
+earlier adventurers. The only exit is to the south.""", [item["key"]]),
 }
 
 # Link rooms together
@@ -97,14 +98,15 @@ print("               [w] <   > [e]                 ")
 print("                     v                       ")
 print("                    [s]                      ")
 print("\nUse letters to move to [n]orth, [s]outh, [e]ast, [w]est")
-print("\nYou can check rooms to find items by [c]hek command")
+print("You can check rooms to find items by [c]hek command")
+print("Also, you can check your [i]nventory")
 print("\nType [q] fot quit")
 print("===========================================")
 
 
 while playmode is True:
-    print(f"\n{player.name}, you at {player.current_room.room_name}")
-    action = input("What do you wanna do now?")
+    print(f"\n[{player.name}], you at -= {player.current_room.room_name} =-")
+    action = input("Your move ==>")
     if action == "q" or action == "quit" or action == "exit":
         print("\n--= bye-bye =--")
         playmode = False

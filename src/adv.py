@@ -106,37 +106,43 @@ print("===========================================")
 
 while playmode is True:
     print(f"\n[{player.name}], you at -= {player.current_room.room_name} =-")
-    action = input("Your move ==>")
-    if action == "q" or action == "quit" or action == "exit":
-        print("\n--= bye-bye =--")
-        playmode = False
-    elif action == "c" or action == "check":
-        print(f"\nItems in room: {nowlocation.show_items()}")
-    elif action == "i" or action == "inventory":
-        print(f"\nInventory: {player.show_inventory()}")
-    elif action == "n" or action == "north":
-        if hasattr(nowlocation, "n_to"):
-            nowlocation = nowlocation.n_to
-            player.change_room(nowlocation)
+    action = input("Your move ==>").lower().split(' ')
+    print(action)
+    if len(action) == 1:
+        if action[0] == 'q' or action == 'quit' or action == 'exit':
+            print("\n--= bye-bye =--")
+            playmode = False
+        elif action[0] == "c" or action[0] == "check":
+            print(f"\nItems in room: {nowlocation.show_items()}")
+        elif action[0] == "i" or action[0] == "inventory":
+            print(f"\nInventory: {player.show_inventory()}")
+        elif action[0] == "n" or action[0] == "north":
+            if hasattr(nowlocation, "n_to"):
+                nowlocation = nowlocation.n_to
+                player.change_room(nowlocation)
+            else:
+                print("\n--= Movement isn't allowed =--")
+        elif action[0] == "s" or action[0] == "south":
+            if hasattr(nowlocation, "s_to"):
+                nowlocation = nowlocation.s_to
+                player.change_room(nowlocation)
+            else:
+                print("\n--= Movement isn't allowed =--")
+        elif action[0] == "e" or action[0] == "east":
+            if hasattr(nowlocation, "e_to"):
+                nowlocation = nowlocation.e_to
+                player.change_room(nowlocation)
+            else:
+                print("\n--= Movement isn't allowed =--")
+        elif action[0] == "w" or action[0] == "west":
+            if hasattr(nowlocation, "w_to"):
+                nowlocation = nowlocation.w_to
+                player.change_room(nowlocation)
+            else:
+                print("\n--= Movement isn't allowed =--")
         else:
             print("\n--= Movement isn't allowed =--")
-    elif action == "s" or action == "south":
-        if hasattr(nowlocation, "s_to"):
-            nowlocation = nowlocation.s_to
-            player.change_room(nowlocation)
-        else:
-            print("\n--= Movement isn't allowed =--")
-    elif action == "e" or action == "east":
-        if hasattr(nowlocation, "e_to"):
-            nowlocation = nowlocation.e_to
-            player.change_room(nowlocation)
-        else:
-            print("\n--= Movement isn't allowed =--")
-    elif action == "w" or action == "west":
-        if hasattr(nowlocation, "w_to"):
-            nowlocation = nowlocation.w_to
-            player.change_room(nowlocation)
-        else:
-            print("\n--= Movement isn't allowed =--")
+    elif len(action) == 2:
+        print('ololo')
     else:
-        print("\n--= Movement isn't allowed =--")
+        print('Incorrect input')

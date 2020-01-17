@@ -24,3 +24,7 @@ class Room:
     def remove_item(self, item, player):
         self.room_items.remove(item)
         player.pick_up(item)
+
+    def add_item(self, item, player):
+        self.room_items.append(item)
+        player.remove_from_inventory(item)

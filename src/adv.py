@@ -99,6 +99,7 @@ print("                     v                       ")
 print("                    [s]                      ")
 print("\nUse letters to move to [n]orth, [s]outh, [e]ast, [w]est")
 print("You can check rooms to find items by [c]hek command")
+print("When you will find the item, you can [t]ake it or [d]rop it")
 print("Also, you can check your [i]nventory")
 print("\nType [q] fot quit")
 print("===========================================")
@@ -145,7 +146,10 @@ while playmode is True:
         if action[0] == 't' or action[0] == 'take':
             player.take_item(action[1], nowlocation)
             print(f"\n[{action[1]}] was picked up")
+        elif action[0] == 'd' or action[0] == 'drop':
+            player.drop_item(action[1], nowlocation)
+            print(f"\n[{action[1]}] was droped")
         else:
-            print("ololo")
+            print("\n--= Incorrect input ==-")
     else:
-        print('Incorrect input')
+        print('\n--= Incorrect input ==-')

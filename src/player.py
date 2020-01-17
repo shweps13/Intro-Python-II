@@ -12,23 +12,39 @@ class Player:
 
     def show_inventory(self):
         if len(self.inventory) == 0:
-            return "Empty"
+            return "-== Empty ==-"
         else:
             return ', '.join(str(v) for v in self.inventory)
 
     def pick_up(self, item): 
         self.inventory.append(item)
     
+    def remove_from_inventory(self, item):
+        self.inventory.remove(item)
+    
     def take_item(self, item, room):
         if len(room.room_items) == 0:
-            print(f"This room has no items.")
+            print(f"-== This room has no items ==-")
             return
         e = False
         for i in room.room_items:
             if i[0].item_name == item:
                 room.remove_item(i, self)
-                print(f"{item} founded!")
+                print(f"-== {item} founded! ==-")
                 e = True
                 break
         if not e:
-            print(f"{item} is not here!")
+            print(f"-== {item} is not here! ==-")
+    
+    def drop_item(self, item, room):
+        if len(self.inventory) == 0:
+            print("-== Inventory is empty ==-")
+            return
+        e = False
+        for i in self.inventory:
+            if i[0].item_name == item:
+                room.add_item(i, self)
+                e = True
+                break
+        if not e:
+            print(f"-== {item} can't be found in inventory ==-")
